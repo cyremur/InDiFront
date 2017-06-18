@@ -1,0 +1,8 @@
+{
+  "name": "InDiProvFrontEnd",
+  "version": "0.0.1",
+  "dependencies": {
+    "@types/d3": "^4.9.0",
+    "d3": "^4.9.1"
+  }
+}

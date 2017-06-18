@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+		"module" : "none",
+    "types" : ["d3"]
+  },
+  "files": [
+    "index.ts",
+    "gantt-chart-d3.ts"
+  ]
+}
