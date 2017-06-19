@@ -21,9 +21,9 @@ class gantt {
 	constructor(){}
   private _margin = {
   	top : 20,
-  	right : 40,
+  	right : 100,
   	bottom : 20,
-  	left : 150
+  	left : 100
   };
   private _selector = 'body';
   private timeDomainStart = d3.timeDay.offset(new Date(),-3);
@@ -31,8 +31,8 @@ class gantt {
   private _timeDomainMode = TimeDomainMode.Fit;// fixed or fit
   private _taskTypes = ["running"];
   private _taskStatusMap = {};// {[status:string]: string;};
-  private _height = document.body.clientHeight - this._margin.top - this._margin.bottom-5;
-  private _width = document.body.clientWidth - this._margin.right - this._margin.left-5;
+  private _height = document.body.clientHeight - this._margin.top - this._margin.bottom;
+  private _width = document.body.clientWidth - this._margin.right - this._margin.left;
 
   private _tickFormat = "%H:%M";
 
@@ -236,7 +236,7 @@ class gantt {
     public width(value: number = null) {
 			if (value == null)
 			    return this._width;
-			this._width = value;
+			this._width = value - this._margin.right - this._margin.left;
 			return this;
     }
 

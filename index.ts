@@ -45,8 +45,10 @@ d3.json("http://localhost:9080/agents", function(error, json) {
 var format = "%S.%L";
 
 var g = new gantt();
-g.height(450);
-g.width(800);
+g.selector("#gantt-chart");
+g.height(500);
+var w = document.getElementById("gantt-chart").clientWidth;
+g.width(w);
 g.taskTypes(taskTypes);
 g.taskStatus(taskStatus);
 g.tickFormat(format);
