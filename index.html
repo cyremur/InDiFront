@@ -13,41 +13,52 @@
   <body>
 		<div class="container">
 			<div class="col-md-12">
-				<h1>Client Info</h1>
+				<h1>Spoof Logging Data</h1>
 				Client: <input type="text" id="clientname"><br>
 				Session: <input type="text" id="sessionname">
-			<div class="col-md-12">
-				<div class="col-xs-12 col-sm-6 pull-left">
-					<h2>Post Vertex Log</h1>
-					Vertex type: <select name="type">
-						<option value="Agent">Agent</option>
-						<option value="Activity">Activity</option>
-						<option value="Entity">Entity</option>
-					</select><br>
-					Vertex name: <input type="text" id="vertname"><br>
-					Vertex start: <input type="text" id="vertstart"><br>
-					Vertex end: <input type="text" id="vertend"><br>
-					<button type="button" onclick="post">Submit</button>
-				</div>
-				<div class="col-xs-12 col-sm-6 pull-left">
-					<h2>Post Edge Log</h1>
-					Edge type: <select name="type">
-						<option value="Agent">Agent</option>
-						<option value="Activity">Activity</option>
-						<option value="Entity">Entity</option>
-					</select><br>
-					First Vertex name: <input type="text" id="firstvertname"><br>
-					Second Vertex name: <input type="text" id="secondvertname"><br>
-					<button type="button" onclick="post">Submit</button>
+				<div class="col-md-12">
+					<div class="col-xs-12 col-sm-6 pull-left">
+						<h2>Post Vertex Log</h1>
+						Vertex type: <select id="verttype">
+							<option value="Agent">Agent</option>
+							<option value="Activity">Activity</option>
+							<option value="Entity">Entity</option>
+						</select><br>
+						Vertex name: <input type="text" id="vertname"><br>
+						Vertex start: <input type="text" id="vertstart"><br>
+						Vertex end: <input type="text" id="vertend"><br>
+						<button type="button" onclick="postVertex()">Submit</button>
+					</div>
+					<div class="col-xs-12 col-sm-6 pull-left">
+						<h2>Post Edge Log</h1>
+						Edge type: <select id="edgetype">
+							<option value="Agent">Agent</option>
+							<option value="Activity">Activity</option>
+							<option value="Entity">Entity</option>
+						</select><br>
+						First Vertex name: <input type="text" id="firstvertname"><br>
+						Second Vertex name: <input type="text" id="secondvertname"><br>
+						<button type="button" onclick="postEdge()">Submit</button>
+					</div>
 				</div>
 			</div>
-			<div class="col-md-12" id="gantt-chart"></div>
+			<div class="col-md-12">
+				<h1>Query Activities</h1>
+				<div class="col-xs-12 col-sm-6 pull-left">
+					From timestamp: <input type="text" id="fromtimestamp"><br>
+					To timestamp: <input type="text" id="totimestamp"><br>
+					Group by: <select id="activitydim">
+						<option value="wasAssociatedWithAgent">wasAssociatedWith Agent</option>
+						<option value="usedEntity">used Entity</option>
+						<option value="generatedEntity">generated Entity</option>
+					</select>
+				</div>
+				<div class="col-md-12" id="gantt-chart"></div>
+			</div>
 		</div>
-		<div class="inactive loadloadloading loading" id="loadloadloading"><div class="loading-circle"></div></div>
-	</div>
 
-	<script src="node_modules/d3/build/d3.js"></script>
-	<script src="gantt-chart-d3.js"></script>
-	<script src="index.js"></script>
+		<script src="node_modules/d3/build/d3.js"></script>
+		<script src="gantt-chart-d3.js"></script>
+		<script src="index.js"></script>
   </body>
 </html>

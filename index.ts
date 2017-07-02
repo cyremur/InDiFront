@@ -1,5 +1,37 @@
 /// <reference path="gantt-chart-d3.ts"/>
 
+function postVertex() {
+	var client = d3.select("#clientname").property("value");
+	var session = d3.select("#sessionname").property("value");
+	var type = d3.select("#verttype").property("value");
+	var name = d3.select("#vertname").property("value");
+	var start = d3.select("#vertstart").property("value");
+	var end = d3.select("#vertend").property("value");
+	console.log("Posting Vertex.");
+	var json = `
+{
+  "client": "${client}",
+  "session": "${session}",
+  "vertices": [
+    {
+      "type": "${type}",
+      "name": "${name}",
+      "start": ${start},
+      "end": ${end}
+    }
+  ]
+}`;
+console.log(json);
+
+	var req = d3.request("http://localhost:9080/log");
+	console.log(req);
+	req.post(json);
+}
+
+function postEdge() {
+	console.log("Posting Edge.");
+}
+
 var tasks = [];
 var start = new Date(100);
 var end = new Date(200);
@@ -32,9 +64,9 @@ var taskTypes = [
 ];
 
 d3.text("http://localhost:9080/ready", function(error, text) {
-	console.log("Ready?");
-	if(error) throw error;
-	console.log(text);
+	if(error) {
+		alert("Logging server appears to be offline.");
+	}
 });
 
 d3.json("http://localhost:9080/agents", function(error, json) {
