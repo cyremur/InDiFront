@@ -32,9 +32,13 @@
 					<div class="col-xs-12 col-sm-6 pull-left">
 						<h2>Post Edge Log</h1>
 						Edge type: <select id="edgetype">
-							<option value="Agent">Agent</option>
-							<option value="Activity">Activity</option>
-							<option value="Entity">Entity</option>
+							<option value="wasGeneratedBy">Entity wasGeneratedBy Activity</option>
+							<option value="wasDerivedFrom">Entity wasDerivedFrom Entity</option>
+							<option value="wasAttributedTo">Entity wasAttributedTo Agent</option>
+							<option value="used">Activity used Entity</option>
+							<option value="wasInformedBy">Activity wasInformedBy Activity</option>
+							<option value="wasAssociatedWith">Activity wasAssociatedWith Agent</option>
+							<option value="actedOnBehalfOf">Agent actedOnBehalfOf Agent</option>
 						</select><br>
 						First Vertex name: <input type="text" id="firstvertname"><br>
 						Second Vertex name: <input type="text" id="secondvertname"><br>

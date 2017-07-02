@@ -7,7 +7,7 @@ function postVertex() {
 	var name = d3.select("#vertname").property("value");
 	var start = d3.select("#vertstart").property("value");
 	var end = d3.select("#vertend").property("value");
-	console.log("Posting Vertex.");
+
 	var json = `
 {
   "client": "${client}",
@@ -21,15 +21,31 @@ function postVertex() {
     }
   ]
 }`;
-console.log(json);
 
-	var req = d3.request("http://localhost:9080/log");
-	console.log(req);
-	req.post(json);
+	d3.request("http://localhost:9080/log").post(json);
 }
 
 function postEdge() {
-	console.log("Posting Edge.");
+	var client = d3.select("#clientname").property("value");
+	var session = d3.select("#sessionname").property("value");
+	var type = d3.select("#edgetype").property("value");
+	var first = d3.select("#firstvertname").property("value");
+	var second = d3.select("#secondvertname").property("value");
+
+	var json = `
+{
+  "client": "${client}",
+  "session": "${session}",
+	"edges": [
+    {
+      "type": "${type}",
+      "first": "${first}",
+      "second": "${second}"
+    }
+  ]
+}`;
+
+	d3.request("http://localhost:9080/log").post(json);
 }
 
 var tasks = [];
