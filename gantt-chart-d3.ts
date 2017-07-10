@@ -7,7 +7,8 @@ class Task {
 	constructor(
 		public startDate: Date,
 	  public endDate: Date,
-	  public taskName: string,
+		public taskName: string,
+	  public taskType: string,
 	  public status: string
 	){}
 }
@@ -37,7 +38,7 @@ class gantt {
   private _tickFormat = "%H:%M";
 
   private keyFunction(d: Task) {
-     return d.startDate + d.taskName + d.endDate;
+     return d.startDate + d.taskType + d.endDate;
   }
 
   private x = d3.scaleTime()
@@ -126,7 +127,7 @@ class gantt {
          }
       })
   	  .attr("y", 0)
-  	  .attr("transform", function(d) { return "translate(" + g.x(d.startDate.valueOf()) + "," + g.y(d.taskName) + ")"; })
+  	  .attr("transform", function(d) { return "translate(" + g.x(d.startDate.valueOf()) + "," + g.y(d.taskType) + ")"; })
   	  .attr("height", function(d) { return g.y.bandwidth(); })
   	  .attr("width", function(d) {
   	     return Math.max(1,(g.x(d.endDate) - g.x(d.startDate)));
@@ -169,14 +170,14 @@ class gantt {
 	 })
 	 .transition()
 	 .attr("y", 0)
-	 .attr("transform", function(d) { return "translate(" + g.x(d.startDate.valueOf()) + "," + g.y(d.taskName) + ")"; })
+	 .attr("transform", function(d) { return "translate(" + g.x(d.startDate.valueOf()) + "," + g.y(d.taskType) + ")"; })
 	 .attr("height", function(d) { return g.y.bandwidth(); })
 	 .attr("width", function(d) {
 	     return Math.max(1,(g.x(d.endDate) - g.x(d.startDate)));
 	 });
 
    rect.transition()
-   .attr("transform", function(d) { return "translate(" + g.x(d.startDate.valueOf()) + "," + g.y(d.taskName) + ")"; })
+   .attr("transform", function(d) { return "translate(" + g.x(d.startDate.valueOf()) + "," + g.y(d.taskType) + ")"; })
    .attr("height", function(d) { return g.y.bandwidth(); })
    .attr("width", function(d) {
      return Math.max(1,(g.x(d.endDate) - g.x(d.startDate)));

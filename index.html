@@ -52,10 +52,11 @@
 					From timestamp: <input type="text" id="fromtimestamp"><br>
 					To timestamp: <input type="text" id="totimestamp"><br>
 					Group by: <select id="activitydim">
-						<option value="wasAssociatedWithAgent">wasAssociatedWith Agent</option>
-						<option value="usedEntity">used Entity</option>
-						<option value="generatedEntity">generated Entity</option>
-					</select>
+						<option value="wasAssociatedWith">wasAssociatedWith Agent</option>
+						<option value="used">used Entity</option>
+						<option value="wasGeneratedBy">generated Entity</option>
+					</select><br>
+					<button type="button" onclick="refreshChart()">Redraw</button>
 				</div>
 				<div class="col-md-12" id="gantt-chart"></div>
 			</div>
