@@ -114,8 +114,11 @@ class gantt {
     	.attr("height", this._height + this._margin.top + this._margin.bottom)
     	.attr("transform", "translate(" + this._margin.left + ", " + this._margin.top + ")");
 
-    svg.selectAll(".chart")
+    var taskElements = svg.selectAll(".chart")
   	  .data(tasks, this.keyFunction).enter()
+			.append("g")
+  	  .attr("transform", function(d) { return "translate(" + g.x(d.startDate.valueOf()) + "," + g.y(d.taskType) + ")"; });
+		taskElements
   	  .append("rect")
   	  .attr("rx", 5)
       .attr("ry", 5)
@@ -127,11 +130,18 @@ class gantt {
          }
       })
   	  .attr("y", 0)
-  	  .attr("transform", function(d) { return "translate(" + g.x(d.startDate.valueOf()) + "," + g.y(d.taskType) + ")"; })
   	  .attr("height", function(d) { return g.y.bandwidth(); })
-  	  .attr("width", function(d) {
-  	     return Math.max(1,(g.x(d.endDate) - g.x(d.startDate)));
-	    });
+  	  .attr("width", function(d) { return Math.max(1,(g.x(d.endDate) - g.x(d.startDate))); });
+		var fontsize=20;
+		taskElements
+			.append("text")
+			.attr("dx", fontsize*2)
+			.attr("dy", function(d) { return g.y.bandwidth() / 2 + fontsize/2;})
+			.attr("font-size", fontsize)
+			.attr("fill", "black")
+			.text(function(d: Task) {
+				return d.taskName;
+			});
 
 
   	 svg.append("g")
