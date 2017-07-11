@@ -49,12 +49,10 @@ function postEdge() {
 }
 
 var tasks = [];
-var start = new Date(100);
-var end = new Date(200);
 
 var t1 = new Task(
-	new Date(1000),
-	new Date(2000),
+	new Date(3),
+	new Date(17),
 	"task A",
 	"arbitrary",
 	"running"
@@ -63,8 +61,8 @@ var t1 = new Task(
 tasks.push(t1);
 
 var t2 = new Task(
-	new Date(3000),
-	new Date(4000),
+	new Date(31),
+	new Date(42),
 	"task B",
 	"special",
 	"stopped"
@@ -134,8 +132,8 @@ function refreshChart() {
 				console.log(activity);
 				console.log(reference);
 				let task = new Task(
-					new Date(activity.start*1000),
-					new Date(activity.end*1000),
+					new Date(activity.start),
+					new Date(activity.end),
 					activity.name,
 					reference.name,
 					reference.name
@@ -147,8 +145,8 @@ function refreshChart() {
 		for(let v of json.vertices) {
 			if(v.type == "Activity" && connectedActs.indexOf(v.id) == -1) {
 				let task = new Task(
-					new Date(v.start * 1000),
-					new Date(v.end * 1000),
+					new Date(v.start),
+					new Date(v.end),
 					v.name,
 					"N/A",
 					"N/A"
